@@ -1,0 +1,29 @@
+package com.example.zhbj;
+
+import com.example.librarydemo.Utils;
+import com.example.zhbj.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Window;
+/**
+ * Ö÷Ò³Ãæ
+ * @author Administrator
+ *
+ */
+public class MainActivity extends Activity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
+		setContentView(R.layout.activity_main);
+		
+	  Utils.doSomething();
+	 // R.drawable.p10;
+	}
+
+	
+	
+}

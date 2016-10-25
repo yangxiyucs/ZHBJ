@@ -1,0 +1,57 @@
+package zhbj.view;
+
+import android.content.Context;
+import android.content.res.Configuration;
+import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+
+/**
+ * 头条新闻自定义viewPager
+ * 
+ * @author Administrator
+ * 
+ */
+public class TopNewsViewPager extends ViewPager {
+
+	private int startX;
+
+	public TopNewsViewPager(Context context) {
+		super(context);
+
+	}
+
+	public TopNewsViewPager(Context context, AttributeSet attrs) {
+		super(context, attrs);
+
+	}
+
+	/**
+	 * 1.上下滑动不拦截 2.向右滑动并且当前是第一个页面，需要拦截 3.向左滑动并且当前是最后一个页面,需要拦截
+	 * 
+	 */
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+
+		getParent().requestDisallowInterceptTouchEvent(true);
+		switch (ev.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			startX = (int) ev.getX();
+			int startY = (int) ev.getY();
+			break;
+		case MotionEvent.ACTION_MOVE:
+			int endX = (int) ev.getX();
+			int endY = (int) ev.getY();
+
+			int dx = endX - startX;
+			int dy = endY - startY;
+			break;
+
+		default:
+			break;
+		}
+
+		return super.dispatchTouchEvent(ev);
+	}
+
+}
